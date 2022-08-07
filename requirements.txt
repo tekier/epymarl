@@ -1,5 +1,7 @@
 absl-py
+aiohttp==3.7.4
 attrs
+griddly
 gym==0.21.0
 idna==2.7
 imageio
@@ -7,6 +9,7 @@ lbforaging
 matplotlib
 mpyq==0.2.5
 numpy
+pandas
 pbr==4.3.0
 Pillow
 pluggy==0.7.1
@@ -25,6 +28,7 @@ rware
 s2clientprotocol==4.10.1.75800.0
 sacred
 scipy
+seaborn
 six==1.11.0
 sk-video==1.1.10
 snakeviz

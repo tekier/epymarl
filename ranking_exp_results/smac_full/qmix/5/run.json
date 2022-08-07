@@ -1,0 +1,95 @@
+{
+  "artifacts": [],
+  "command": "my_main",
+  "experiment": {
+    "base_dir": "/home/tekier/epymarl/src",
+    "dependencies": [
+      "gym==0.21.0",
+      "munch==2.5.0",
+      "numpy==1.23.1",
+      "python-dateutil==2.7.3",
+      "PyYAML==5.3.1",
+      "sacred==0.8.2",
+      "torch==1.12.0"
+    ],
+    "mainfile": "main.py",
+    "name": "pymarl",
+    "repositories": [
+      {
+        "commit": "f047072aedc9a128d28b01ba42ef3381dcad2328",
+        "dirty": true,
+        "url": "git@github.com:uoe-agents/epymarl.git"
+      },
+      {
+        "commit": "f047072aedc9a128d28b01ba42ef3381dcad2328",
+        "dirty": true,
+        "url": "git@github.com:uoe-agents/epymarl.git"
+      },
+      {
+        "commit": "f047072aedc9a128d28b01ba42ef3381dcad2328",
+        "dirty": true,
+        "url": "git@github.com:uoe-agents/epymarl.git"
+      }
+    ],
+    "sources": [
+      [
+        "main.py",
+        "_sources/main_0faca278828bfe98ca9cc8104cb4e27d.py"
+      ],
+      [
+        "run.py",
+        "_sources/run_5d4bb9e9f1ebd951855fcd89928cb1c5.py"
+      ],
+      [
+        "utils/logging.py",
+        "_sources/logging_8309e899ab76a4e610428ba7ee8d8acb.py"
+      ]
+    ]
+  },
+  "heartbeat": "2022-08-06T15:50:30.702400",
+  "host": {
+    "ENV": {},
+    "cpu": "Intel(R) Xeon(R) CPU @ 2.30GHz",
+    "hostname": "margie",
+    "os": [
+      "Linux",
+      "Linux-4.19.0-21-cloud-amd64-x86_64-with-glibc2.10"
+    ],
+    "python_version": "3.8.13"
+  },
+  "meta": {
+    "command": "my_main",
+    "options": {
+      "--beat-interval": null,
+      "--capture": null,
+      "--comment": null,
+      "--debug": false,
+      "--enforce_clean": false,
+      "--file_storage": null,
+      "--force": false,
+      "--help": false,
+      "--loglevel": null,
+      "--mongo_db": null,
+      "--name": null,
+      "--pdb": false,
+      "--print-config": false,
+      "--priority": null,
+      "--queue": false,
+      "--s3": null,
+      "--sql": null,
+      "--tiny_db": null,
+      "--unobserved": false,
+      "COMMAND": null,
+      "UPDATE": [
+        "env_args.map_name=5m_vs_6m"
+      ],
+      "help": false,
+      "with": true
+    }
+  },
+  "resources": [],
+  "result": null,
+  "start_time": "2022-08-06T10:20:03.925846",
+  "status": "COMPLETED",
+  "stop_time": "2022-08-06T15:50:30.678451"
+}

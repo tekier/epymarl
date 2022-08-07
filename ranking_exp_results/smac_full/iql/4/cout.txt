@@ -1,0 +1,1616 @@
+[INFO 06:04:50] pymarl Running command 'my_main'
+[INFO 06:04:50] pymarl Started run with ID "4"
+[DEBUG 06:04:50] pymarl Starting Heartbeat
+[DEBUG 06:04:50] my_main Started
+[INFO 06:04:50] my_main Experiment Parameters:
+[INFO 06:04:50] my_main 
+
+{   'action_selector': 'epsilon_greedy',
+    'add_value_last_step': True,
+    'agent': 'rnn',
+    'agent_output_type': 'q',
+    'batch_size': 32,
+    'batch_size_run': 1,
+    'buffer_cpu_only': True,
+    'buffer_size': 5000,
+    'checkpoint_path': '',
+    'double_q': True,
+    'env': 'sc2',
+    'env_args': {   'continuing_episode': False,
+                    'debug': False,
+                    'difficulty': '7',
+                    'game_version': None,
+                    'heuristic_ai': False,
+                    'heuristic_rest': False,
+                    'map_name': '5m_vs_6m',
+                    'move_amount': 2,
+                    'obs_all_health': True,
+                    'obs_instead_of_state': False,
+                    'obs_last_action': False,
+                    'obs_own_health': True,
+                    'obs_pathing_grid': False,
+                    'obs_terrain_height': False,
+                    'obs_timestep_number': False,
+                    'replay_dir': '',
+                    'replay_prefix': '',
+                    'reward_death_value': 10,
+                    'reward_defeat': 0,
+                    'reward_negative_scale': 0.5,
+                    'reward_only_positive': True,
+                    'reward_scale': True,
+                    'reward_scale_rate': 20,
+                    'reward_sparse': False,
+                    'reward_win': 200,
+                    'seed': 892450065,
+                    'state_last_action': True,
+                    'state_timestep_number': False,
+                    'step_mul': 8},
+    'epsilon_anneal_time': 50000,
+    'epsilon_finish': 0.05,
+    'epsilon_start': 1.0,
+    'evaluate': False,
+    'evaluation_epsilon': 0.0,
+    'gamma': 0.99,
+    'grad_norm_clip': 10,
+    'hidden_dim': 64,
+    'hypergroup': None,
+    'label': 'default_label',
+    'learner': 'q_learner',
+    'learner_log_interval': 10000,
+    'load_step': 0,
+    'local_results_path': 'results',
+    'log_interval': 50000,
+    'lr': 0.0005,
+    'mac': 'basic_mac',
+    'mixer': None,
+    'name': 'iql',
+    'obs_agent_id': True,
+    'obs_individual_obs': False,
+    'obs_last_action': False,
+    'optim_alpha': 0.99,
+    'optim_eps': 1e-05,
+    'repeat_id': 1,
+    'runner': 'episode',
+    'runner_log_interval': 10000,
+    'save_model': True,
+    'save_model_interval': 2000000,
+    'save_replay': False,
+    'seed': 892450065,
+    'standardise_returns': False,
+    'standardise_rewards': True,
+    't_max': 2050000,
+    'target_update_interval_or_tau': 200,
+    'test_greedy': True,
+    'test_interval': 50000,
+    'test_nepisode': 100,
+    'use_cuda': True,
+    'use_rnn': False,
+    'use_tensorboard': False}
+
+[INFO 06:04:52] my_main Beginning training for 2050000 timesteps
+[INFO 06:04:52] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 18113 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-n11_e2gl/
+[INFO 06:04:52] absl Connecting to: ws://127.0.0.1:18113/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 18113 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-n11_e2gl/'
+Starting up...
+Startup Phase 1 complete
+[INFO 06:04:53] absl Connecting to: ws://127.0.0.1:18113/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:18113
+Startup Phase 3 complete. Ready for commands.
+[INFO 06:04:54] absl Connecting to: ws://127.0.0.1:18113/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+/home/tekier/epymarl/src/components/episode_buffer.py:103: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at  ../torch/csrc/utils/tensor_new.cpp:204.)
+  v = th.tensor(v, dtype=dtype, device=self.device)
+/home/tekier/epymarl/src/components/episode_buffer.py:103: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  v = th.tensor(v, dtype=dtype, device=self.device)
+[INFO 06:04:59] my_main t_env: 20 / 2050000
+[INFO 06:04:59] my_main Estimated time left: 4 minutes, 43 seconds. Time passed: 6 seconds
+[INFO 06:05:35] my_main Saving models to results/models/iql_seed892450065_5m_vs_6m_2022-08-05 06:04:50.755966/20
+[INFO 06:12:03] my_main Recent Stats | t_env:      50002 | Episode:     2248
+battle_won_mean:           0.0000	dead_allies_mean:          4.9940	dead_enemies_mean:         0.1193	ep_length_mean:           21.7545
+epsilon:                   0.2394	grad_norm:                 3.7211	loss:                      3.6255	q_taken_mean:              0.9102
+return_mean:               2.4341	return_std:                0.5952	target_mean:               0.9190	td_error_abs:              1.3487
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     0.9800	test_dead_enemies_mean:    0.0000	test_ep_length_mean:      70.0000
+test_return_mean:          0.3872	test_return_std:           0.3820	
+[INFO 06:12:03] my_main t_env: 50024 / 2050000
+[INFO 06:12:03] my_main Estimated time left: 4 hours, 42 minutes, 46 seconds. Time passed: 7 minutes, 11 seconds
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 06:13:02] absl Shutdown gracefully.
+[INFO 06:13:02] absl Shutdown with return code: -15
+[INFO 06:13:02] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 17265 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-cdmvythd/
+[INFO 06:13:02] absl Connecting to: ws://127.0.0.1:17265/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 17265 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-cdmvythd/'
+Starting up...
+Startup Phase 1 complete
+[INFO 06:13:03] absl Connecting to: ws://127.0.0.1:17265/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:17265
+Startup Phase 3 complete. Ready for commands.
+[INFO 06:13:04] absl Connecting to: ws://127.0.0.1:17265/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 06:18:46] my_main Recent Stats | t_env:     100006 | Episode:     4542
+battle_won_mean:           0.0000	dead_allies_mean:          4.9960	dead_enemies_mean:         0.7588	ep_length_mean:           22.4982
+epsilon:                   0.0500	grad_norm:                 5.4992	loss:                      4.0370	q_taken_mean:              2.5236
+return_mean:               4.2379	return_std:                1.2654	target_mean:               2.5357	td_error_abs:              1.4964
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     2.9900	test_dead_enemies_mean:    0.1350	test_ep_length_mean:      46.6450
+test_return_mean:          2.1017	test_return_std:           0.5905	
+[INFO 06:18:46] my_main t_env: 100029 / 2050000
+[INFO 06:18:46] my_main Estimated time left: 4 hours, 21 minutes, 26 seconds. Time passed: 13 minutes, 53 seconds
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 06:21:09] absl Shutdown gracefully.
+[INFO 06:21:09] absl Shutdown with return code: -15
+[INFO 06:21:09] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 21050 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-kg01nb1c/
+[INFO 06:21:09] absl Connecting to: ws://127.0.0.1:21050/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 21050 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-kg01nb1c/'
+Starting up...
+Startup Phase 1 complete
+[INFO 06:21:10] absl Connecting to: ws://127.0.0.1:21050/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:21050
+Startup Phase 3 complete. Ready for commands.
+[INFO 06:21:11] absl Connecting to: ws://127.0.0.1:21050/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 06:24:54] my_main t_env: 150073 / 2050000
+[INFO 06:24:54] my_main Estimated time left: 3 hours, 53 minutes, 14 seconds. Time passed: 20 minutes, 1 seconds
+[INFO 06:25:16] my_main Recent Stats | t_env:     150073 | Episode:     6709
+battle_won_mean:           0.0013	dead_allies_mean:          4.9808	dead_enemies_mean:         2.3284	ep_length_mean:           21.6152
+epsilon:                   0.0500	grad_norm:                 8.4251	loss:                      4.5529	q_taken_mean:              2.7440
+return_mean:               6.7919	return_std:                1.2528	target_mean:               2.7340	td_error_abs:              1.5728
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     3.8775	test_dead_enemies_mean:    1.1950	test_ep_length_mean:      39.5850
+test_return_mean:          4.3181	test_return_std:           0.8805	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 06:28:27] absl Shutdown gracefully.
+[INFO 06:28:27] absl Shutdown with return code: -15
+[INFO 06:28:27] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 19872 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-tkn9y9nz/
+[INFO 06:28:27] absl Connecting to: ws://127.0.0.1:19872/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 19872 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-tkn9y9nz/'
+Starting up...
+Startup Phase 1 complete
+[INFO 06:28:28] absl Connecting to: ws://127.0.0.1:19872/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:19872
+Startup Phase 3 complete. Ready for commands.
+[INFO 06:28:29] absl Connecting to: ws://127.0.0.1:19872/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 06:31:17] my_main t_env: 200095 / 2050000
+[INFO 06:31:17] my_main Estimated time left: 3 hours, 56 minutes, 10 seconds. Time passed: 26 minutes, 25 seconds
+[INFO 06:31:31] my_main Recent Stats | t_env:     200095 | Episode:     8394
+battle_won_mean:           0.0000	dead_allies_mean:          4.7745	dead_enemies_mean:         1.5175	ep_length_mean:           31.9365
+epsilon:                   0.0500	grad_norm:                 7.5795	loss:                      3.6009	q_taken_mean:              2.5881
+return_mean:               5.2869	return_std:                1.5894	target_mean:               2.5672	td_error_abs:              1.3683
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     4.1020	test_dead_enemies_mean:    1.4540	test_ep_length_mean:      36.1820
+test_return_mean:          4.9078	test_return_std:           0.9421	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 06:36:56] absl Shutdown gracefully.
+[INFO 06:36:56] absl Shutdown with return code: -15
+[INFO 06:36:56] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 22193 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-1hbbjqji/
+[INFO 06:36:56] absl Connecting to: ws://127.0.0.1:22193/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 22193 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-1hbbjqji/'
+Starting up...
+Startup Phase 1 complete
+[INFO 06:36:57] absl Connecting to: ws://127.0.0.1:22193/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:22193
+Startup Phase 3 complete. Ready for commands.
+[INFO 06:36:58] absl Connecting to: ws://127.0.0.1:22193/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 06:38:15] my_main t_env: 250106 / 2050000
+[INFO 06:38:15] my_main Estimated time left: 4 hours, 10 minutes, 34 seconds. Time passed: 33 minutes, 22 seconds
+[INFO 06:38:28] my_main Recent Stats | t_env:     250106 | Episode:    10560
+battle_won_mean:           0.0000	dead_allies_mean:          4.9840	dead_enemies_mean:         1.2325	ep_length_mean:           24.2274
+epsilon:                   0.0500	grad_norm:                 5.9313	loss:                      2.8915	q_taken_mean:              2.4522
+return_mean:               5.1523	return_std:                1.5109	target_mean:               2.4531	td_error_abs:              1.2482
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     4.9060	test_dead_enemies_mean:    1.8640	test_ep_length_mean:      26.5240
+test_return_mean:          6.1392	test_return_std:           1.0827	
+[INFO 06:45:14] my_main t_env: 300122 / 2050000
+[INFO 06:45:14] my_main Estimated time left: 4 hours, 4 minutes, 25 seconds. Time passed: 40 minutes, 22 seconds
+[INFO 06:45:27] my_main Recent Stats | t_env:     300122 | Episode:    13055
+battle_won_mean:           0.0000	dead_allies_mean:          4.9979	dead_enemies_mean:         1.7382	ep_length_mean:           20.1870
+epsilon:                   0.0500	grad_norm:                 7.5039	loss:                      2.3392	q_taken_mean:              2.2453
+return_mean:               5.9565	return_std:                1.1002	target_mean:               2.2656	td_error_abs:              1.1292
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     4.9060	test_dead_enemies_mean:    2.2220	test_ep_length_mean:      25.9240
+test_return_mean:          6.7228	test_return_std:           1.1399	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 06:45:41] absl Shutdown gracefully.
+[INFO 06:45:41] absl Shutdown with return code: -15
+[INFO 06:45:41] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 19424 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-nsxda366/
+[INFO 06:45:41] absl Connecting to: ws://127.0.0.1:19424/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 19424 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-nsxda366/'
+Starting up...
+Startup Phase 1 complete
+[INFO 06:45:42] absl Connecting to: ws://127.0.0.1:19424/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:19424
+Startup Phase 3 complete. Ready for commands.
+[INFO 06:45:43] absl Connecting to: ws://127.0.0.1:19424/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 06:51:44] my_main t_env: 350130 / 2050000
+[INFO 06:51:44] my_main Estimated time left: 3 hours, 40 minutes, 38 seconds. Time passed: 46 minutes, 51 seconds
+[INFO 06:51:56] my_main Recent Stats | t_env:     350130 | Episode:    15555
+battle_won_mean:           0.0000	dead_allies_mean:          4.9964	dead_enemies_mean:         1.6689	ep_length_mean:           20.0569
+epsilon:                   0.0500	grad_norm:                 7.9685	loss:                      2.0826	q_taken_mean:              2.5606
+return_mean:               6.0595	return_std:                1.0491	target_mean:               2.5744	td_error_abs:              1.0788
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     4.9060	test_dead_enemies_mean:    2.0980	test_ep_length_mean:      25.5280
+test_return_mean:          6.6620	test_return_std:           1.0743	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 06:53:44] absl Shutdown gracefully.
+[INFO 06:53:44] absl Shutdown with return code: -15
+[INFO 06:53:44] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 17008 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-zqhwnfzl/
+[INFO 06:53:44] absl Connecting to: ws://127.0.0.1:17008/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 17008 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-zqhwnfzl/'
+Starting up...
+Startup Phase 1 complete
+[INFO 06:53:45] absl Connecting to: ws://127.0.0.1:17008/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:17008
+Startup Phase 3 complete. Ready for commands.
+[INFO 06:53:46] absl Connecting to: ws://127.0.0.1:17008/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 06:58:12] my_main t_env: 400131 / 2050000
+[INFO 06:58:12] my_main Estimated time left: 3 hours, 33 minutes, 37 seconds. Time passed: 53 minutes, 19 seconds
+[INFO 06:58:25] my_main Recent Stats | t_env:     400131 | Episode:    18099
+battle_won_mean:           0.0000	dead_allies_mean:          4.9968	dead_enemies_mean:         1.6963	ep_length_mean:           19.6895
+epsilon:                   0.0500	grad_norm:                 5.9767	loss:                      1.6785	q_taken_mean:              2.4871
+return_mean:               6.2095	return_std:                0.8929	target_mean:               2.4984	td_error_abs:              0.9496
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     5.0000	test_dead_enemies_mean:    2.1260	test_ep_length_mean:      20.7600
+test_return_mean:          6.9062	test_return_std:           1.0147	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 07:01:48] absl Shutdown gracefully.
+[INFO 07:01:48] absl Shutdown with return code: -15
+[INFO 07:01:48] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 16600 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-po9ed2sw/
+[INFO 07:01:48] absl Connecting to: ws://127.0.0.1:16600/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 16600 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-po9ed2sw/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:01:49] absl Connecting to: ws://127.0.0.1:16600/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:16600
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:01:50] absl Connecting to: ws://127.0.0.1:16600/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 07:04:41] my_main t_env: 450134 / 2050000
+[INFO 07:04:41] my_main Estimated time left: 3 hours, 27 minutes, 15 seconds. Time passed: 59 minutes, 48 seconds
+[INFO 07:04:54] my_main Recent Stats | t_env:     450134 | Episode:    20649
+battle_won_mean:           0.0000	dead_allies_mean:          4.9981	dead_enemies_mean:         1.8413	ep_length_mean:           19.5742
+epsilon:                   0.0500	grad_norm:                 3.6600	loss:                      1.1588	q_taken_mean:              2.3003
+return_mean:               6.5459	return_std:                1.0389	target_mean:               2.3031	td_error_abs:              0.8173
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     5.0000	test_dead_enemies_mean:    2.1100	test_ep_length_mean:      20.3320
+test_return_mean:          6.9300	test_return_std:           0.9970	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 07:09:41] absl Shutdown gracefully.
+[INFO 07:09:41] absl Shutdown with return code: -15
+[INFO 07:09:41] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 17741 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-qdn1pqol/
+[INFO 07:09:41] absl Connecting to: ws://127.0.0.1:17741/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 17741 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-qdn1pqol/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:09:42] absl Connecting to: ws://127.0.0.1:17741/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:17741
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:09:43] absl Connecting to: ws://127.0.0.1:17741/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 07:11:01] my_main t_env: 500142 / 2050000
+[INFO 07:11:01] my_main Estimated time left: 3 hours, 16 minutes, 17 seconds. Time passed: 1 hours, 6 minutes, 8 seconds
+[INFO 07:11:14] my_main Recent Stats | t_env:     500142 | Episode:    23152
+battle_won_mean:           0.0000	dead_allies_mean:          4.9980	dead_enemies_mean:         2.0099	ep_length_mean:           19.8704
+epsilon:                   0.0500	grad_norm:                 4.5125	loss:                      0.9989	q_taken_mean:              2.1208
+return_mean:               6.7601	return_std:                1.0572	target_mean:               2.1271	td_error_abs:              0.7580
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     5.0000	test_dead_enemies_mean:    2.1880	test_ep_length_mean:      20.1720
+test_return_mean:          7.1082	test_return_std:           1.0371	
+[INFO 07:17:14] my_main t_env: 550142 / 2050000
+[INFO 07:17:14] my_main Estimated time left: 3 hours, 6 minutes, 41 seconds. Time passed: 1 hours, 12 minutes, 22 seconds
+[INFO 07:17:27] my_main Recent Stats | t_env:     550142 | Episode:    25631
+battle_won_mean:           0.0000	dead_allies_mean:          5.0000	dead_enemies_mean:         2.1153	ep_length_mean:           20.1716
+epsilon:                   0.0500	grad_norm:                 3.8717	loss:                      1.0299	q_taken_mean:              2.0426
+return_mean:               6.9087	return_std:                1.0798	target_mean:               2.0370	td_error_abs:              0.7494
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     5.0000	test_dead_enemies_mean:    2.2220	test_ep_length_mean:      20.1580
+test_return_mean:          7.2282	test_return_std:           1.0115	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 07:17:31] absl Shutdown gracefully.
+[INFO 07:17:31] absl Shutdown with return code: -15
+[INFO 07:17:31] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 23647 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-gufed8ji/
+[INFO 07:17:31] absl Connecting to: ws://127.0.0.1:23647/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 23647 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-gufed8ji/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:17:32] absl Connecting to: ws://127.0.0.1:23647/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:23647
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:17:33] absl Connecting to: ws://127.0.0.1:23647/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 07:23:35] my_main t_env: 600149 / 2050000
+[INFO 07:23:35] my_main Estimated time left: 3 hours, 4 minutes, 1 seconds. Time passed: 1 hours, 18 minutes, 42 seconds
+[INFO 07:23:48] my_main Recent Stats | t_env:     600149 | Episode:    28106
+battle_won_mean:           0.0000	dead_allies_mean:          4.9972	dead_enemies_mean:         2.2067	ep_length_mean:           20.2002
+epsilon:                   0.0500	grad_norm:                 2.4861	loss:                      0.8817	q_taken_mean:              2.0258
+return_mean:               7.0330	return_std:                1.0914	target_mean:               2.0250	td_error_abs:              0.6900
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     5.0000	test_dead_enemies_mean:    2.4180	test_ep_length_mean:      20.4440
+test_return_mean:          7.5095	test_return_std:           1.0840	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 07:25:23] absl Shutdown gracefully.
+[INFO 07:25:23] absl Shutdown with return code: -15
+[INFO 07:25:23] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 17962 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-ncn289cs/
+[INFO 07:25:23] absl Connecting to: ws://127.0.0.1:17962/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 17962 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-ncn289cs/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:25:24] absl Connecting to: ws://127.0.0.1:17962/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:17962
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:25:25] absl Connecting to: ws://127.0.0.1:17962/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 07:29:57] my_main t_env: 650149 / 2050000
+[INFO 07:29:57] my_main Estimated time left: 2 hours, 57 minutes, 56 seconds. Time passed: 1 hours, 25 minutes, 4 seconds
+[INFO 07:30:09] my_main Recent Stats | t_env:     650149 | Episode:    30602
+battle_won_mean:           0.0008	dead_allies_mean:          4.9972	dead_enemies_mean:         2.3167	ep_length_mean:           20.1006
+epsilon:                   0.0500	grad_norm:                 3.7286	loss:                      0.8635	q_taken_mean:              1.8761
+return_mean:               7.0577	return_std:                1.1544	target_mean:               1.8770	td_error_abs:              0.6840
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     5.0000	test_dead_enemies_mean:    2.4680	test_ep_length_mean:      20.4080
+test_return_mean:          7.4571	test_return_std:           1.1046	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 07:33:18] absl Shutdown gracefully.
+[INFO 07:33:18] absl Shutdown with return code: -15
+[INFO 07:33:18] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 22233 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-q_afkz8l/
+[INFO 07:33:18] absl Connecting to: ws://127.0.0.1:22233/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 22233 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-q_afkz8l/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:33:19] absl Connecting to: ws://127.0.0.1:22233/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:22233
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:33:20] absl Connecting to: ws://127.0.0.1:22233/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 07:36:18] my_main t_env: 700165 / 2050000
+[INFO 07:36:18] my_main Estimated time left: 2 hours, 51 minutes, 40 seconds. Time passed: 1 hours, 31 minutes, 25 seconds
+[INFO 07:36:31] my_main Recent Stats | t_env:     700165 | Episode:    33114
+battle_won_mean:           0.0000	dead_allies_mean:          4.9980	dead_enemies_mean:         2.3241	ep_length_mean:           19.8733
+epsilon:                   0.0500	grad_norm:                 3.9101	loss:                      0.8953	q_taken_mean:              1.8216
+return_mean:               6.9363	return_std:                1.1101	target_mean:               1.8175	td_error_abs:              0.7027
+test_battle_won_mean:      0.0000	test_dead_allies_mean:     5.0000	test_dead_enemies_mean:    2.5120	test_ep_length_mean:      20.3420
+test_return_mean:          7.4741	test_return_std:           1.0893	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 07:41:09] absl Shutdown gracefully.
+[INFO 07:41:09] absl Shutdown with return code: -15
+[INFO 07:41:09] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 16858 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-1jmcfd4u/
+[INFO 07:41:09] absl Connecting to: ws://127.0.0.1:16858/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 16858 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-1jmcfd4u/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:41:10] absl Connecting to: ws://127.0.0.1:16858/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:16858
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:41:11] absl Connecting to: ws://127.0.0.1:16858/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 07:42:37] my_main t_env: 750177 / 2050000
+[INFO 07:42:37] my_main Estimated time left: 2 hours, 44 minutes, 11 seconds. Time passed: 1 hours, 37 minutes, 44 seconds
+[INFO 07:42:50] my_main Recent Stats | t_env:     750177 | Episode:    35578
+battle_won_mean:           0.0000	dead_allies_mean:          4.9972	dead_enemies_mean:         2.4200	ep_length_mean:           20.1406
+epsilon:                   0.0500	grad_norm:                 3.6733	loss:                      0.8547	q_taken_mean:              1.7524
+return_mean:               7.1863	return_std:                1.1413	target_mean:               1.7408	td_error_abs:              0.6847
+test_battle_won_mean:      0.0040	test_dead_allies_mean:     4.9940	test_dead_enemies_mean:    2.6400	test_ep_length_mean:      20.4660
+test_return_mean:          7.6830	test_return_std:           1.2220	
+[INFO 07:48:49] my_main t_env: 800186 / 2050000
+[INFO 07:48:49] my_main Estimated time left: 2 hours, 34 minutes, 47 seconds. Time passed: 1 hours, 43 minutes, 56 seconds
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 07:48:57] absl Shutdown gracefully.
+[INFO 07:48:57] absl Shutdown with return code: -15
+[INFO 07:48:57] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 23397 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-wn08pb4h/
+[INFO 07:48:57] absl Connecting to: ws://127.0.0.1:23397/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 23397 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-wn08pb4h/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:48:58] absl Connecting to: ws://127.0.0.1:23397/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:23397
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:48:59] absl Connecting to: ws://127.0.0.1:23397/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 07:49:09] my_main Recent Stats | t_env:     800186 | Episode:    38011
+battle_won_mean:           0.0012	dead_allies_mean:          4.9967	dead_enemies_mean:         2.6139	ep_length_mean:           20.6309
+epsilon:                   0.0500	grad_norm:                 3.1255	loss:                      0.8218	q_taken_mean:              1.6713
+return_mean:               7.5008	return_std:                1.2493	target_mean:               1.6805	td_error_abs:              0.6697
+test_battle_won_mean:      0.0080	test_dead_allies_mean:     4.9780	test_dead_enemies_mean:    2.7880	test_ep_length_mean:      20.7300
+test_return_mean:          7.8623	test_return_std:           1.4773	
+[INFO 07:55:12] my_main t_env: 850201 / 2050000
+[INFO 07:55:12] my_main Estimated time left: 2 hours, 33 minutes, 0 seconds. Time passed: 1 hours, 50 minutes, 19 seconds
+[INFO 07:55:25] my_main Recent Stats | t_env:     850201 | Episode:    40468
+battle_won_mean:           0.0012	dead_allies_mean:          4.9976	dead_enemies_mean:         2.4817	ep_length_mean:           20.3653
+epsilon:                   0.0500	grad_norm:                 2.5723	loss:                      0.8339	q_taken_mean:              1.6788
+return_mean:               7.2832	return_std:                1.2083	target_mean:               1.6757	td_error_abs:              0.6503
+test_battle_won_mean:      0.0100	test_dead_allies_mean:     4.9740	test_dead_enemies_mean:    2.8200	test_ep_length_mean:      20.7920
+test_return_mean:          7.9167	test_return_std:           1.5809	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 07:56:50] absl Shutdown gracefully.
+[INFO 07:56:50] absl Shutdown with return code: -15
+[INFO 07:56:50] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 24142 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-d_k87y7p/
+[INFO 07:56:50] absl Connecting to: ws://127.0.0.1:24142/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 24142 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-d_k87y7p/'
+Starting up...
+Startup Phase 1 complete
+[INFO 07:56:51] absl Connecting to: ws://127.0.0.1:24142/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:24142
+Startup Phase 3 complete. Ready for commands.
+[INFO 07:56:52] absl Connecting to: ws://127.0.0.1:24142/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:01:31] my_main t_env: 900203 / 2050000
+[INFO 08:01:31] my_main Estimated time left: 2 hours, 25 minutes, 29 seconds. Time passed: 1 hours, 56 minutes, 38 seconds
+[INFO 08:01:44] my_main Recent Stats | t_env:     900203 | Episode:    42886
+battle_won_mean:           0.0004	dead_allies_mean:          4.9971	dead_enemies_mean:         2.5728	ep_length_mean:           20.6223
+epsilon:                   0.0500	grad_norm:                 2.8062	loss:                      0.7590	q_taken_mean:              1.6397
+return_mean:               7.3821	return_std:                1.1677	target_mean:               1.6422	td_error_abs:              0.6434
+test_battle_won_mean:      0.0100	test_dead_allies_mean:     4.9740	test_dead_enemies_mean:    2.8860	test_ep_length_mean:      21.0340
+test_return_mean:          8.0749	test_return_std:           1.6092	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 08:04:40] absl Shutdown gracefully.
+[INFO 08:04:40] absl Shutdown with return code: -15
+[INFO 08:04:40] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 16787 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-7gted0j9/
+[INFO 08:04:40] absl Connecting to: ws://127.0.0.1:16787/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 16787 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-7gted0j9/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:04:41] absl Connecting to: ws://127.0.0.1:16787/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:16787
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:04:42] absl Connecting to: ws://127.0.0.1:16787/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:07:51] my_main t_env: 950217 / 2050000
+[INFO 08:07:51] my_main Estimated time left: 2 hours, 19 minutes, 6 seconds. Time passed: 2 hours, 2 minutes, 58 seconds
+[INFO 08:08:04] my_main Recent Stats | t_env:     950217 | Episode:    45290
+battle_won_mean:           0.0017	dead_allies_mean:          4.9950	dead_enemies_mean:         2.6349	ep_length_mean:           20.7356
+epsilon:                   0.0500	grad_norm:                 2.8035	loss:                      0.7662	q_taken_mean:              1.5583
+return_mean:               7.4843	return_std:                1.2736	target_mean:               1.5675	td_error_abs:              0.6485
+test_battle_won_mean:      0.0140	test_dead_allies_mean:     4.9620	test_dead_enemies_mean:    3.0200	test_ep_length_mean:      21.4780
+test_return_mean:          8.3683	test_return_std:           1.7915	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 08:12:30] absl Shutdown gracefully.
+[INFO 08:12:30] absl Shutdown with return code: -15
+[INFO 08:12:30] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 20612 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-fhhjqutd/
+[INFO 08:12:30] absl Connecting to: ws://127.0.0.1:20612/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 20612 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-fhhjqutd/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:12:31] absl Connecting to: ws://127.0.0.1:20612/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:20612
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:12:32] absl Connecting to: ws://127.0.0.1:20612/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:14:11] my_main t_env: 1000234 / 2050000
+[INFO 08:14:11] my_main Estimated time left: 2 hours, 13 minutes, 0 seconds. Time passed: 2 hours, 9 minutes, 18 seconds
+[INFO 08:14:24] my_main Recent Stats | t_env:    1000234 | Episode:    47666
+battle_won_mean:           0.0068	dead_allies_mean:          4.9826	dead_enemies_mean:         2.7959	ep_length_mean:           21.0856
+epsilon:                   0.0500	grad_norm:                 1.9862	loss:                      0.9332	q_taken_mean:              1.5564
+return_mean:               7.7466	return_std:                1.5712	target_mean:               1.5532	td_error_abs:              0.6396
+test_battle_won_mean:      0.0140	test_dead_allies_mean:     4.9600	test_dead_enemies_mean:    3.0560	test_ep_length_mean:      21.5020
+test_return_mean:          8.3896	test_return_std:           1.8124	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 08:20:19] absl Shutdown gracefully.
+[INFO 08:20:19] absl Shutdown with return code: -15
+[INFO 08:20:19] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 23858 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-0mf_m7na/
+[INFO 08:20:19] absl Connecting to: ws://127.0.0.1:23858/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 23858 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-0mf_m7na/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:20:20] absl Connecting to: ws://127.0.0.1:23858/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:23858
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:20:21] absl Connecting to: ws://127.0.0.1:23858/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:20:29] my_main t_env: 1050248 / 2050000
+[INFO 08:20:29] my_main Estimated time left: 2 hours, 5 minutes, 47 seconds. Time passed: 2 hours, 15 minutes, 36 seconds
+[INFO 08:20:42] my_main Recent Stats | t_env:    1050248 | Episode:    50036
+battle_won_mean:           0.0046	dead_allies_mean:          4.9899	dead_enemies_mean:         2.7457	ep_length_mean:           21.0822
+epsilon:                   0.0500	grad_norm:                 2.8336	loss:                      0.7797	q_taken_mean:              1.5135
+return_mean:               7.7114	return_std:                1.4545	target_mean:               1.5196	td_error_abs:              0.6568
+test_battle_won_mean:      0.0260	test_dead_allies_mean:     4.9400	test_dead_enemies_mean:    3.1620	test_ep_length_mean:      21.6400
+test_return_mean:          8.6327	test_return_std:           2.0394	
+[INFO 08:26:38] my_main t_env: 1100249 / 2050000
+[INFO 08:26:38] my_main Estimated time left: 1 hours, 56 minutes, 58 seconds. Time passed: 2 hours, 21 minutes, 45 seconds
+[INFO 08:26:51] my_main Recent Stats | t_env:    1100249 | Episode:    52373
+battle_won_mean:           0.0056	dead_allies_mean:          4.9851	dead_enemies_mean:         2.8662	ep_length_mean:           21.3306
+epsilon:                   0.0500	grad_norm:                 3.5472	loss:                      0.9593	q_taken_mean:              1.5391
+return_mean:               7.8311	return_std:                1.5546	target_mean:               1.5499	td_error_abs:              0.6619
+test_battle_won_mean:      0.0260	test_dead_allies_mean:     4.9420	test_dead_enemies_mean:    3.2140	test_ep_length_mean:      21.8120
+test_return_mean:          8.7098	test_return_std:           2.0266	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 08:28:01] absl Shutdown gracefully.
+[INFO 08:28:01] absl Shutdown with return code: -15
+[INFO 08:28:01] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 18887 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-owr4z0d6/
+[INFO 08:28:01] absl Connecting to: ws://127.0.0.1:18887/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 18887 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-owr4z0d6/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:28:02] absl Connecting to: ws://127.0.0.1:18887/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:18887
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:28:03] absl Connecting to: ws://127.0.0.1:18887/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:32:58] my_main t_env: 1150255 / 2050000
+[INFO 08:32:58] my_main Estimated time left: 1 hours, 54 minutes, 5 seconds. Time passed: 2 hours, 28 minutes, 6 seconds
+[INFO 08:33:12] my_main Recent Stats | t_env:    1150255 | Episode:    54687
+battle_won_mean:           0.0064	dead_allies_mean:          4.9794	dead_enemies_mean:         2.8722	ep_length_mean:           21.5563
+epsilon:                   0.0500	grad_norm:                 2.6673	loss:                      0.9393	q_taken_mean:              1.5208
+return_mean:               7.9112	return_std:                1.5502	target_mean:               1.5282	td_error_abs:              0.6551
+test_battle_won_mean:      0.0360	test_dead_allies_mean:     4.9200	test_dead_enemies_mean:    3.3720	test_ep_length_mean:      22.1420
+test_return_mean:          9.0163	test_return_std:           2.3411	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 08:35:56] absl Shutdown gracefully.
+[INFO 08:35:56] absl Shutdown with return code: -15
+[INFO 08:35:56] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 15579 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-grg6ytfe/
+[INFO 08:35:56] absl Connecting to: ws://127.0.0.1:15579/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 15579 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-grg6ytfe/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:35:57] absl Connecting to: ws://127.0.0.1:15579/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:15579
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:35:58] absl Connecting to: ws://127.0.0.1:15579/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:39:25] my_main t_env: 1200271 / 2050000
+[INFO 08:39:25] my_main Estimated time left: 1 hours, 49 minutes, 31 seconds. Time passed: 2 hours, 34 minutes, 32 seconds
+[INFO 08:39:39] my_main Recent Stats | t_env:    1200271 | Episode:    57052
+battle_won_mean:           0.0094	dead_allies_mean:          4.9791	dead_enemies_mean:         2.9719	ep_length_mean:           21.2896
+epsilon:                   0.0500	grad_norm:                 2.3479	loss:                      1.2586	q_taken_mean:              1.4628
+return_mean:               8.0392	return_std:                1.7108	target_mean:               1.4675	td_error_abs:              0.6641
+test_battle_won_mean:      0.0460	test_dead_allies_mean:     4.9040	test_dead_enemies_mean:    3.4040	test_ep_length_mean:      22.1340
+test_return_mean:          9.1288	test_return_std:           2.5829	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 08:43:55] absl Shutdown gracefully.
+[INFO 08:43:55] absl Shutdown with return code: -15
+[INFO 08:43:55] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 23644 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-jaycbfa8/
+[INFO 08:43:55] absl Connecting to: ws://127.0.0.1:23644/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 23644 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-jaycbfa8/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:43:56] absl Connecting to: ws://127.0.0.1:23644/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:23644
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:43:57] absl Connecting to: ws://127.0.0.1:23644/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:45:49] my_main t_env: 1250272 / 2050000
+[INFO 08:45:49] my_main Estimated time left: 1 hours, 42 minutes, 24 seconds. Time passed: 2 hours, 40 minutes, 57 seconds
+[INFO 08:46:03] my_main Recent Stats | t_env:    1250272 | Episode:    59430
+battle_won_mean:           0.0042	dead_allies_mean:          4.9878	dead_enemies_mean:         2.8185	ep_length_mean:           20.9968
+epsilon:                   0.0500	grad_norm:                 3.2808	loss:                      0.9519	q_taken_mean:              1.5263
+return_mean:               7.6710	return_std:                1.4962	target_mean:               1.5251	td_error_abs:              0.6612
+test_battle_won_mean:      0.0500	test_dead_allies_mean:     4.8920	test_dead_enemies_mean:    3.4540	test_ep_length_mean:      22.2800
+test_return_mean:          9.2636	test_return_std:           2.6819	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 08:51:45] absl Shutdown gracefully.
+[INFO 08:51:45] absl Shutdown with return code: -15
+[INFO 08:51:45] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 22368 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-n91mllqa/
+[INFO 08:51:45] absl Connecting to: ws://127.0.0.1:22368/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 22368 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-n91mllqa/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:51:46] absl Connecting to: ws://127.0.0.1:22368/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:22368
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:51:47] absl Connecting to: ws://127.0.0.1:22368/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 08:52:10] my_main t_env: 1300280 / 2050000
+[INFO 08:52:10] my_main Estimated time left: 1 hours, 35 minutes, 7 seconds. Time passed: 2 hours, 47 minutes, 17 seconds
+[INFO 08:52:23] my_main Recent Stats | t_env:    1300280 | Episode:    61807
+battle_won_mean:           0.0097	dead_allies_mean:          4.9797	dead_enemies_mean:         2.8384	ep_length_mean:           21.0828
+epsilon:                   0.0500	grad_norm:                 2.5719	loss:                      0.8864	q_taken_mean:              1.4338
+return_mean:               7.8447	return_std:                1.7952	target_mean:               1.4286	td_error_abs:              0.6524
+test_battle_won_mean:      0.0380	test_dead_allies_mean:     4.9180	test_dead_enemies_mean:    3.3840	test_ep_length_mean:      22.1140
+test_return_mean:          9.0839	test_return_std:           2.3982	
+[INFO 08:58:21] my_main t_env: 1350285 / 2050000
+[INFO 08:58:21] my_main Estimated time left: 1 hours, 26 minutes, 35 seconds. Time passed: 2 hours, 53 minutes, 29 seconds
+[INFO 08:58:35] my_main Recent Stats | t_env:    1350285 | Episode:    64181
+battle_won_mean:           0.0046	dead_allies_mean:          4.9882	dead_enemies_mean:         2.8250	ep_length_mean:           21.0174
+epsilon:                   0.0500	grad_norm:                 3.0176	loss:                      0.8694	q_taken_mean:              1.4005
+return_mean:               7.7829	return_std:                1.5310	target_mean:               1.3979	td_error_abs:              0.6752
+test_battle_won_mean:      0.0480	test_dead_allies_mean:     4.8920	test_dead_enemies_mean:    3.4020	test_ep_length_mean:      22.0880
+test_return_mean:          9.1555	test_return_std:           2.6748	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 08:59:31] absl Shutdown gracefully.
+[INFO 08:59:31] absl Shutdown with return code: -15
+[INFO 08:59:31] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 15779 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-yqyfmhvj/
+[INFO 08:59:31] absl Connecting to: ws://127.0.0.1:15779/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 15779 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-yqyfmhvj/'
+Starting up...
+Startup Phase 1 complete
+[INFO 08:59:32] absl Connecting to: ws://127.0.0.1:15779/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:15779
+Startup Phase 3 complete. Ready for commands.
+[INFO 08:59:33] absl Connecting to: ws://127.0.0.1:15779/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:04:41] my_main t_env: 1400309 / 2050000
+[INFO 09:04:41] my_main Estimated time left: 1 hours, 22 minutes, 15 seconds. Time passed: 2 hours, 59 minutes, 49 seconds
+[INFO 09:04:55] my_main Recent Stats | t_env:    1400309 | Episode:    66568
+battle_won_mean:           0.0025	dead_allies_mean:          4.9925	dead_enemies_mean:         2.7885	ep_length_mean:           21.0117
+epsilon:                   0.0500	grad_norm:                 2.2925	loss:                      0.8597	q_taken_mean:              1.3834
+return_mean:               7.6273	return_std:                1.3902	target_mean:               1.3853	td_error_abs:              0.6572
+test_battle_won_mean:      0.0400	test_dead_allies_mean:     4.9100	test_dead_enemies_mean:    3.3080	test_ep_length_mean:      21.8900
+test_return_mean:          8.9395	test_return_std:           2.4606	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 09:07:21] absl Shutdown gracefully.
+[INFO 09:07:21] absl Shutdown with return code: -15
+[INFO 09:07:21] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 19524 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-9bzr4dlq/
+[INFO 09:07:21] absl Connecting to: ws://127.0.0.1:19524/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 19524 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-9bzr4dlq/'
+Starting up...
+Startup Phase 1 complete
+[INFO 09:07:22] absl Connecting to: ws://127.0.0.1:19524/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:19524
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:07:23] absl Connecting to: ws://127.0.0.1:19524/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:11:01] my_main t_env: 1450313 / 2050000
+[INFO 09:11:01] my_main Estimated time left: 1 hours, 15 minutes, 54 seconds. Time passed: 3 hours, 6 minutes, 8 seconds
+[INFO 09:11:15] my_main Recent Stats | t_env:    1450313 | Episode:    68958
+battle_won_mean:           0.0025	dead_allies_mean:          4.9937	dead_enemies_mean:         2.7734	ep_length_mean:           20.8900
+epsilon:                   0.0500	grad_norm:                 3.0709	loss:                      0.9061	q_taken_mean:              1.3208
+return_mean:               7.6013	return_std:                1.3936	target_mean:               1.3213	td_error_abs:              0.6483
+test_battle_won_mean:      0.0340	test_dead_allies_mean:     4.9160	test_dead_enemies_mean:    3.2880	test_ep_length_mean:      21.8440
+test_return_mean:          8.8373	test_return_std:           2.3502	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 09:15:13] absl Shutdown gracefully.
+[INFO 09:15:13] absl Shutdown with return code: -15
+[INFO 09:15:13] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 16584 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-re_lhuqg/
+[INFO 09:15:13] absl Connecting to: ws://127.0.0.1:16584/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 16584 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-re_lhuqg/'
+Starting up...
+Startup Phase 1 complete
+[INFO 09:15:14] absl Connecting to: ws://127.0.0.1:16584/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:16584
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:15:15] absl Connecting to: ws://127.0.0.1:16584/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:17:22] my_main t_env: 1500314 / 2050000
+[INFO 09:17:22] my_main Estimated time left: 1 hours, 9 minutes, 40 seconds. Time passed: 3 hours, 12 minutes, 29 seconds
+[INFO 09:17:35] my_main Recent Stats | t_env:    1500314 | Episode:    71334
+battle_won_mean:           0.0046	dead_allies_mean:          4.9882	dead_enemies_mean:         2.8128	ep_length_mean:           21.0461
+epsilon:                   0.0500	grad_norm:                 2.6230	loss:                      0.6890	q_taken_mean:              1.3359
+return_mean:               7.7129	return_std:                1.5232	target_mean:               1.3288	td_error_abs:              0.6182
+test_battle_won_mean:      0.0280	test_dead_allies_mean:     4.9320	test_dead_enemies_mean:    3.2500	test_ep_length_mean:      21.7440
+test_return_mean:          8.7263	test_return_std:           2.2058	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 09:23:03] absl Shutdown gracefully.
+[INFO 09:23:03] absl Shutdown with return code: -15
+[INFO 09:23:03] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 16678 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-y_7w4xjj/
+[INFO 09:23:03] absl Connecting to: ws://127.0.0.1:16678/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 16678 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-y_7w4xjj/'
+Starting up...
+Startup Phase 1 complete
+[INFO 09:23:04] absl Connecting to: ws://127.0.0.1:16678/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:16678
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:23:05] absl Connecting to: ws://127.0.0.1:16678/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:23:40] my_main t_env: 1550317 / 2050000
+[INFO 09:23:40] my_main Estimated time left: 1 hours, 3 minutes, 4 seconds. Time passed: 3 hours, 18 minutes, 47 seconds
+[INFO 09:23:53] my_main Recent Stats | t_env:    1550317 | Episode:    73672
+battle_won_mean:           0.0115	dead_allies_mean:          4.9724	dead_enemies_mean:         2.8872	ep_length_mean:           21.2479
+epsilon:                   0.0500	grad_norm:                 3.5892	loss:                      0.8322	q_taken_mean:              1.3307
+return_mean:               7.8969	return_std:                1.9100	target_mean:               1.3205	td_error_abs:              0.6430
+test_battle_won_mean:      0.0280	test_dead_allies_mean:     4.9300	test_dead_enemies_mean:    3.2480	test_ep_length_mean:      21.7780
+test_return_mean:          8.6718	test_return_std:           2.2422	
+[INFO 09:29:53] my_main t_env: 1600323 / 2050000
+[INFO 09:29:53] my_main Estimated time left: 55 minutes, 47 seconds. Time passed: 3 hours, 25 minutes, 0 seconds
+[INFO 09:30:06] my_main Recent Stats | t_env:    1600323 | Episode:    75972
+battle_won_mean:           0.0204	dead_allies_mean:          4.9514	dead_enemies_mean:         3.0152	ep_length_mean:           21.6927
+epsilon:                   0.0500	grad_norm:                 2.4646	loss:                      1.2699	q_taken_mean:              1.3245
+return_mean:               8.1652	return_std:                2.2684	target_mean:               1.3207	td_error_abs:              0.7059
+test_battle_won_mean:      0.0200	test_dead_allies_mean:     4.9520	test_dead_enemies_mean:    3.2680	test_ep_length_mean:      21.8000
+test_return_mean:          8.5864	test_return_std:           2.0660	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 09:30:50] absl Shutdown gracefully.
+[INFO 09:30:50] absl Shutdown with return code: -15
+[INFO 09:30:50] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 23883 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-fi9lbobe/
+[INFO 09:30:50] absl Connecting to: ws://127.0.0.1:23883/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 23883 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-fi9lbobe/'
+Starting up...
+Startup Phase 1 complete
+[INFO 09:30:51] absl Connecting to: ws://127.0.0.1:23883/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:23883
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:30:52] absl Connecting to: ws://127.0.0.1:23883/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:36:13] my_main t_env: 1650330 / 2050000
+[INFO 09:36:13] my_main Estimated time left: 50 minutes, 42 seconds. Time passed: 3 hours, 31 minutes, 20 seconds
+[INFO 09:36:27] my_main Recent Stats | t_env:    1650330 | Episode:    78275
+battle_won_mean:           0.0248	dead_allies_mean:          4.9465	dead_enemies_mean:         3.0490	ep_length_mean:           21.7683
+epsilon:                   0.0500	grad_norm:                 3.5264	loss:                      1.5523	q_taken_mean:              1.3481
+return_mean:               8.2250	return_std:                2.4218	target_mean:               1.3426	td_error_abs:              0.7878
+test_battle_won_mean:      0.0260	test_dead_allies_mean:     4.9440	test_dead_enemies_mean:    3.3040	test_ep_length_mean:      22.0100
+test_return_mean:          8.6571	test_return_std:           2.3062	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 09:38:41] absl Shutdown gracefully.
+[INFO 09:38:41] absl Shutdown with return code: -15
+[INFO 09:38:41] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 24188 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-b3u850ik/
+[INFO 09:38:41] absl Connecting to: ws://127.0.0.1:24188/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 24188 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-b3u850ik/'
+Starting up...
+Startup Phase 1 complete
+[INFO 09:38:42] absl Connecting to: ws://127.0.0.1:24188/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:24188
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:38:43] absl Connecting to: ws://127.0.0.1:24188/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:42:37] my_main t_env: 1700349 / 2050000
+[INFO 09:42:37] my_main Estimated time left: 44 minutes, 40 seconds. Time passed: 3 hours, 37 minutes, 44 seconds
+[INFO 09:42:50] my_main Recent Stats | t_env:    1700349 | Episode:    80605
+battle_won_mean:           0.0142	dead_allies_mean:          4.9634	dead_enemies_mean:         2.9616	ep_length_mean:           21.5522
+epsilon:                   0.0500	grad_norm:                 6.8504	loss:                      1.6879	q_taken_mean:              1.3001
+return_mean:               8.0042	return_std:                2.0368	target_mean:               1.3045	td_error_abs:              0.8017
+test_battle_won_mean:      0.0320	test_dead_allies_mean:     4.9320	test_dead_enemies_mean:    3.3300	test_ep_length_mean:      22.1180
+test_return_mean:          8.7183	test_return_std:           2.4470	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 09:46:34] absl Shutdown gracefully.
+[INFO 09:46:34] absl Shutdown with return code: -15
+[INFO 09:46:34] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 21307 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-7nw33lzj/
+[INFO 09:46:34] absl Connecting to: ws://127.0.0.1:21307/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 21307 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-7nw33lzj/'
+Starting up...
+Startup Phase 1 complete
+[INFO 09:46:35] absl Connecting to: ws://127.0.0.1:21307/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:21307
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:46:36] absl Connecting to: ws://127.0.0.1:21307/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:48:59] my_main t_env: 1750365 / 2050000
+[INFO 09:48:59] my_main Estimated time left: 38 minutes, 7 seconds. Time passed: 3 hours, 44 minutes, 6 seconds
+[INFO 09:49:12] my_main Recent Stats | t_env:    1750365 | Episode:    82933
+battle_won_mean:           0.0189	dead_allies_mean:          4.9532	dead_enemies_mean:         2.9736	ep_length_mean:           21.4950
+epsilon:                   0.0500	grad_norm:                 4.8817	loss:                      1.9016	q_taken_mean:              1.3878
+return_mean:               8.0563	return_std:                2.2104	target_mean:               1.3944	td_error_abs:              0.7945
+test_battle_won_mean:      0.0340	test_dead_allies_mean:     4.9300	test_dead_enemies_mean:    3.3560	test_ep_length_mean:      22.1460
+test_return_mean:          8.7611	test_return_std:           2.4980	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 09:54:30] absl Shutdown gracefully.
+[INFO 09:54:30] absl Shutdown with return code: -15
+[INFO 09:54:30] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 24722 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-mt3cgvgt/
+[INFO 09:54:30] absl Connecting to: ws://127.0.0.1:24722/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 24722 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-mt3cgvgt/'
+Starting up...
+Startup Phase 1 complete
+[INFO 09:54:31] absl Connecting to: ws://127.0.0.1:24722/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:24722
+Startup Phase 3 complete. Ready for commands.
+[INFO 09:54:32] absl Connecting to: ws://127.0.0.1:24722/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 09:55:23] my_main t_env: 1800380 / 2050000
+[INFO 09:55:23] my_main Estimated time left: 32 minutes, 0 seconds. Time passed: 3 hours, 50 minutes, 31 seconds
+[INFO 09:55:37] my_main Recent Stats | t_env:    1800380 | Episode:    85254
+battle_won_mean:           0.0202	dead_allies_mean:          4.9566	dead_enemies_mean:         3.0358	ep_length_mean:           21.4996
+epsilon:                   0.0500	grad_norm:                 5.4157	loss:                      1.0546	q_taken_mean:              1.2735
+return_mean:               8.1222	return_std:                2.2714	target_mean:               1.2704	td_error_abs:              0.7337
+test_battle_won_mean:      0.0420	test_dead_allies_mean:     4.9180	test_dead_enemies_mean:    3.4620	test_ep_length_mean:      22.4060
+test_return_mean:          9.0256	test_return_std:           2.6617	
+[INFO 10:01:48] my_main t_env: 1850395 / 2050000
+[INFO 10:01:48] my_main Estimated time left: 25 minutes, 35 seconds. Time passed: 3 hours, 56 minutes, 55 seconds
+[INFO 10:02:02] my_main Recent Stats | t_env:    1850395 | Episode:    87588
+battle_won_mean:           0.0133	dead_allies_mean:          4.9647	dead_enemies_mean:         2.9411	ep_length_mean:           21.5014
+epsilon:                   0.0500	grad_norm:                 6.5483	loss:                      1.6165	q_taken_mean:              1.2969
+return_mean:               7.9637	return_std:                2.0153	target_mean:               1.2955	td_error_abs:              0.8056
+test_battle_won_mean:      0.0400	test_dead_allies_mean:     4.9220	test_dead_enemies_mean:    3.4820	test_ep_length_mean:      22.4960
+test_return_mean:          9.0783	test_return_std:           2.6676	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 10:02:30] absl Shutdown gracefully.
+[INFO 10:02:30] absl Shutdown with return code: -15
+[INFO 10:02:30] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 20200 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-xfh1nmkz/
+[INFO 10:02:30] absl Connecting to: ws://127.0.0.1:20200/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 20200 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-xfh1nmkz/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:02:31] absl Connecting to: ws://127.0.0.1:20200/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:20200
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:02:32] absl Connecting to: ws://127.0.0.1:20200/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 10:08:24] my_main t_env: 1900400 / 2050000
+[INFO 10:08:24] my_main Estimated time left: 19 minutes, 43 seconds. Time passed: 4 hours, 3 minutes, 31 seconds
+[INFO 10:08:37] my_main Recent Stats | t_env:    1900400 | Episode:    89963
+battle_won_mean:           0.0084	dead_allies_mean:          4.9806	dead_enemies_mean:         2.8590	ep_length_mean:           21.0942
+epsilon:                   0.0500	grad_norm:                 4.8928	loss:                      1.2524	q_taken_mean:              1.2680
+return_mean:               7.8021	return_std:                1.7783	target_mean:               1.2781	td_error_abs:              0.7281
+test_battle_won_mean:      0.0340	test_dead_allies_mean:     4.9300	test_dead_enemies_mean:    3.4560	test_ep_length_mean:      22.3120
+test_return_mean:          9.0234	test_return_std:           2.4446	
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 10:10:38] absl Shutdown gracefully.
+[INFO 10:10:38] absl Shutdown with return code: -15
+[INFO 10:10:38] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 20189 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-46ajplet/
+[INFO 10:10:38] absl Connecting to: ws://127.0.0.1:20189/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 20189 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-46ajplet/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:10:39] absl Connecting to: ws://127.0.0.1:20189/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:20189
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:10:40] absl Connecting to: ws://127.0.0.1:20189/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 10:14:48] my_main t_env: 1950404 / 2050000
+[INFO 10:14:48] my_main Estimated time left: 12 minutes, 45 seconds. Time passed: 4 hours, 9 minutes, 55 seconds
+[INFO 10:15:02] my_main Recent Stats | t_env:    1950404 | Episode:    92306
+battle_won_mean:           0.0068	dead_allies_mean:          4.9805	dead_enemies_mean:         2.7968	ep_length_mean:           21.1949
+epsilon:                   0.0500	grad_norm:                 5.1150	loss:                      1.4063	q_taken_mean:              1.2689
+return_mean:               7.7312	return_std:                1.7219	target_mean:               1.2695	td_error_abs:              0.7143
+test_battle_won_mean:      0.0260	test_dead_allies_mean:     4.9480	test_dead_enemies_mean:    3.4280	test_ep_length_mean:      22.2460
+test_return_mean:          8.9638	test_return_std:           2.2581	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 10:18:35] absl Shutdown gracefully.
+[INFO 10:18:35] absl Shutdown with return code: -15
+[INFO 10:18:35] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 23891 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-6ce_pihg/
+[INFO 10:18:35] absl Connecting to: ws://127.0.0.1:23891/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 23891 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-6ce_pihg/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:18:36] absl Connecting to: ws://127.0.0.1:23891/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:23891
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:18:37] absl Connecting to: ws://127.0.0.1:23891/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+[INFO 10:21:15] my_main Saving models to results/models/iql_seed892450065_5m_vs_6m_2022-08-05 06:04:50.755966/2000029
+[INFO 10:21:18] my_main t_env: 2000422 / 2050000
+[INFO 10:21:18] my_main Estimated time left: 6 minutes, 25 seconds. Time passed: 4 hours, 16 minutes, 25 seconds
+[INFO 10:21:31] my_main Recent Stats | t_env:    2000422 | Episode:    94650
+battle_won_mean:           0.0124	dead_allies_mean:          4.9700	dead_enemies_mean:         2.8733	ep_length_mean:           21.4105
+epsilon:                   0.0500	grad_norm:                 3.1617	loss:                      0.8704	q_taken_mean:              1.2312
+return_mean:               7.9357	return_std:                1.9299	target_mean:               1.2278	td_error_abs:              0.6611
+test_battle_won_mean:      0.0320	test_dead_allies_mean:     4.9320	test_dead_enemies_mean:    3.4740	test_ep_length_mean:      22.4200
+test_return_mean:          9.0846	test_return_std:           2.3998	
+RequestQuit command received.
+Closing Application...
+unable to parse websocket frame.
+[INFO 10:26:32] absl Shutdown gracefully.
+[INFO 10:26:32] absl Shutdown with return code: -15
+[INFO 10:26:32] absl Launching SC2: /home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64 -listen 127.0.0.1 -port 18028 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-dg8b10bv/
+[INFO 10:26:33] absl Connecting to: ws://127.0.0.1:18028/sc2api, attempt: 0, running: True
+Version: B69232 (SC2.4.6-Publish)
+Build: Oct 23 2018 01:43:04
+Command Line: '"/home/tekier/epymarl/src/3rdparty/StarCraftII/Versions/Base69232/SC2_x64" -listen 127.0.0.1 -port 18028 -dataDir /home/tekier/epymarl/src/3rdparty/StarCraftII/ -tempDir /tmp/sc-dg8b10bv/'
+Starting up...
+Startup Phase 1 complete
+[INFO 10:26:34] absl Connecting to: ws://127.0.0.1:18028/sc2api, attempt: 1, running: True
+Startup Phase 2 complete
+Creating stub renderer...
+Listening on: 127.0.0.1:18028
+Startup Phase 3 complete. Ready for commands.
+[INFO 10:26:35] absl Connecting to: ws://127.0.0.1:18028/sc2api, attempt: 2, running: True
+Requesting to join a single player game
+Configuring interface options
+Configure: raw interface enabled
+Configure: feature layer interface disabled
+Configure: score interface disabled
+Configure: render interface disabled
+Entering load game phase.
+Launching next game.
+Next launch phase started: 2
+Next launch phase started: 3
+Next launch phase started: 4
+Next launch phase started: 5
+Next launch phase started: 6
+Next launch phase started: 7
+Next launch phase started: 8
+Game has started.
+Sending ResponseJoinGame
+unable to parse websocket frame.
+RequestQuit command received.
+Closing Application...
+[INFO 10:27:38] absl Shutdown gracefully.
+[INFO 10:27:38] absl Shutdown with return code: -15
+[INFO 10:27:38] my_main Finished Training
+Exiting Main
+Stopping all threads
+Thread Thread-1 is alive! Is daemon: False
+Thread joined
+Exiting script
+[DEBUG 10:27:39] my_main Finished after 4:22:49.
+[INFO 10:27:39] pymarl Completed after 4:22:49

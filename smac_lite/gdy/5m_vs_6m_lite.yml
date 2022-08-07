@@ -1,0 +1,402 @@
+Version: "0.1"
+Environment:
+  Name: 5m-vs-6m-lite
+  Description: |
+    This is a Griddly game designed to loosely emulate the SMAC 5m_vs_6m test environment.
+    A cooperative multiagent team is fighting an enemy team of bots who are following an A*
+    search to come into contact with and kill the agents. The agents can fire on the bots to
+    reduce their health and eventually kill them. Using this, the agents must learn to win.
+  Observers:
+    Vector:
+      IncludeVariables: false
+      IncludePlayerId: false
+      IncludeRotation: false
+    Isometric:
+      TileSize: [ 64, 96 ]
+      BackgroundTile: isometric_sprites/slime.png
+      IsoTileHeight: 32
+      IsoTileDepth: 8
+    Block2D:
+      TileSize: 35
+  Variables:
+    - Name: gnome_count
+      InitialValue: 6
+    - Name: jelly_count
+      InitialValue: 5
+  Player:
+    Count: 5
+    AvatarObject: jelly
+    Observer:
+      TrackAvatar: true
+      Height: 10
+      Width: 10
+      OffsetX: 0
+      OffsetY: 0
+  Termination:
+    Win:
+      - Conditions:
+          - eq: [ gnome_count, 0 ]
+        Reward: 200
+    Lose:
+      - Conditions:
+          - eq: [ jelly_count, 0 ]
+        Reward: -200
+  Levels:
+    - |
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    g    g    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    g    g    g    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    g    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      j1   j2   .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    j3   j4   .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    j5   .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+      .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .    .
+
+######################################################################################################
+
+Actions:
+  - Name: flame_projectile_movement
+    InputMapping:
+      Internal: true
+    Behaviours:
+      - Src:
+          Object: flame
+          Commands:
+            - mov: _dest
+            - eq:
+                Arguments: [ range, 0 ]
+                Commands:
+                  - remove: true
+            - gt:
+                Arguments: [ range, 0 ]
+                Commands:
+                  - decr: range
+            - exec:
+                Action: flame_projectile_movement
+                Delay: 1
+        Dst:
+          Object: [ _empty ]
+
+      - Src:
+          Object: flame
+          Commands:
+            - remove: true
+        Dst:
+          Object: gnome
+          Commands:
+            - decr: gnome_health
+            - reward: 1
+            - eq:
+                Arguments: [ gnome_health, 0 ]
+                Commands:
+                  - reward: 10
+                  - remove: true
+                  - decr: gnome_count
+
+      - Src:
+          Object: flame
+          Commands:
+            - remove: true
+        Dst:
+          Object: [flame, jelly, _boundary]
+
+  - Name: move
+    Behaviours:
+      - Src:
+          Object: jelly
+          Commands:
+            - mov: _dest
+        Dst:
+          Object: _empty
+
+  - Name: flame_shoot
+    InputMapping:
+      Inputs:
+        1:
+          OrientationVector: [ 0, -1 ]
+          VectorToDest: [ 0, -1 ]
+          MetaData:
+            image_idx: 0
+        2:
+          OrientationVector: [ 1, 0 ]
+          VectorToDest: [ 1, 0 ]
+          MetaData:
+            image_idx: 1
+        3:
+          OrientationVector: [ 0, 1 ]
+          VectorToDest: [ 0, 1 ]
+          MetaData:
+            image_idx: 2
+        4:
+          OrientationVector: [ -1, 0 ]
+          VectorToDest: [ -1, 0 ]
+          MetaData:
+            image_idx: 3
+    Behaviours:
+      - Src:
+          Object: jelly
+        Dst:
+          Object: [ _empty ]
+          Commands:
+            - spawn: flame
+
+  - Name: set_flame_direction
+    InputMapping:
+      Internal: true
+    Behaviours:
+      - Src:
+          Object: flame
+          Commands:
+            - set_tile: meta.image_idx
+        Dst:
+          Object: [ _empty, flame, gnome, jelly ]
+
+  - Name: gnome_random_movement
+    InputMapping:
+      Internal: true
+      Inputs:
+        1:
+          OrientationVector: [ 0, -1 ]
+          VectorToDest: [ 0, -1 ]
+        2:
+          OrientationVector: [ 1, 0 ]
+          VectorToDest: [ 1, 0 ]
+        3:
+          OrientationVector: [ 0, 1 ]
+          VectorToDest: [ 0, 1 ]
+        4:
+          OrientationVector: [ -1, 0 ]
+          VectorToDest: [ -1, 0 ]
+    Behaviours:
+      - Src:
+          Object: gnome
+          Preconditions:
+            - eq: [ is_chasing, 0 ]
+          Commands:
+            - mov: _dest
+            - exec:
+                Action: gnome_random_movement
+                Delay: 1
+                Randomize: true
+        Dst:
+          Object: [_empty]
+
+      - Src:
+          Object: gnome
+        Dst:
+          Object: jelly
+          Commands:
+            - reward: -10
+            - remove: true
+            - decr: jelly_count
+
+      - Src:
+          Object: gnome
+          Preconditions:
+            - eq: [ is_chasing, 0 ]
+          Commands:
+            - exec:
+                Action: gnome_random_movement
+                Delay: 3
+                Randomize: true
+        Dst:
+          Object: [ _boundary, gnome ]
+
+
+  - Name: gnome_chase_player
+    InputMapping:
+      Internal: true
+      Inputs:
+        1:
+          OrientationVector: [ 0, -1 ]
+          VectorToDest: [ 0, -1 ]
+        2:
+          OrientationVector: [ 1, 0 ]
+          VectorToDest: [ 1, 0 ]
+        3:
+          OrientationVector: [ 0, 1 ]
+          VectorToDest: [ 0, 1 ]
+        4:
+          OrientationVector: [ -1, 0 ]
+          VectorToDest: [ -1, 0 ]
+    Behaviours:
+      - Src:
+          Object: gnome
+          Commands:
+            - set: [ src.chase_cooldown, 0 ]
+            - mov: _dest
+        Dst:
+          Object: [ _empty ]
+
+      - Src:
+          Object: gnome
+        Dst:
+          Object: jelly
+          Commands:
+            - reward: -10
+            - remove: true
+            - decr: jelly_count
+            - set: [ src.chase_cooldown, 0 ]
+      - Src:
+          Object: gnome
+          Commands:
+            - set: [ src.chase_cooldown, 0 ]
+        Dst:
+          Object: [ flame, _boundary, gnome ]
+
+  - Name: gnome_chase_proximity_trigger_off
+    Trigger:
+      Range: 7
+      Type: RANGE_BOX_BOUNDARY
+    InputMapping:
+      Internal: true
+    Behaviours:
+      - Src:
+          Object: gnome
+          Preconditions:
+            - eq: [ src.is_chasing, 1 ]
+          Commands:
+            - set: [ src.is_chasing, 0 ]
+            - exec:
+                Action: gnome_random_movement
+                Delay: 1
+                Randomize: true
+        Dst:
+          Object: jelly
+
+  - Name: gnome_chase_proximity_trigger_on
+    Trigger:
+      Range: 20
+      Type: RANGE_BOX_AREA
+    InputMapping:
+      Internal: true
+    Probability: 0.8
+    Behaviours:
+      - Src:
+          Preconditions:
+            - eq: [ src.chase_cooldown, 0 ]
+          Object: gnome
+          Commands:
+            - set: [ src.is_chasing, 1 ]
+            - set: [ src.chase_cooldown, 1 ]
+            - exec:
+                Action: gnome_chase_player
+                Delay: 1
+                Search:
+                  ImpassableObjects: [ flame ]
+                  TargetObjectName: jelly
+        Dst:
+          Object: jelly
+
+######################################################################################################
+
+Objects:
+  - Name: flame
+    Z: 2
+    InitialActions:
+      - Action: set_flame_direction
+        ActionId: 1
+      - Action: flame_projectile_movement
+        Delay: 1
+    Variables:
+      - Name: range
+        InitialValue: 6
+    MapCharacter: f
+    Observers:
+      Isometric:
+        - Image: isometric_sprites/fire-red-up.png
+          Scale: 0.5
+        - Image: isometric_sprites/fire-red-right.png
+          Scale: 0.5
+        - Image: isometric_sprites/fire-red-down.png
+          Scale: 0.5
+        - Image: isometric_sprites/fire-red-left.png
+          Scale: 0.5
+      Sprite2D:
+        - Image: isometric_sprites/fire-red-up.png
+          Scale: 0.5
+        - Image: isometric_sprites/fire-red-right.png
+          Scale: 0.5
+        - Image: isometric_sprites/fire-red-down.png
+          Scale: 0.5
+        - Image: isometric_sprites/fire-red-left.png
+          Scale: 0.5
+      Block2D:
+        - Shape: circle
+          Color: [ 255, 255, 0 ]
+          Scale: 0.3
+        - Shape: circle
+          Color: [ 255, 255, 0 ]
+          Scale: 0.3
+        - Shape: circle
+          Color: [ 255, 255, 0 ]
+          Scale: 0.3
+        - Shape: circle
+          Color: [ 255, 255, 0 ]
+          Scale: 0.3
+
+  - Name: jelly
+    Z: 1
+    MapCharacter: j
+    Observers:
+      Isometric:
+        - Image: isometric_sprites/jelly.png
+      Sprite2D:
+        - Image: isometric_sprites/jelly.png
+      Block2D:
+        - Shape: pentagon
+          Color: [ 0, 255, 0 ]
+          Scale: 1.0
+        - Shape: pentagon
+          Color: [ 0, 255, 0 ]
+          Scale: 1.0
+        - Shape: pentagon
+          Color: [ 0, 255, 0 ]
+          Scale: 1.0
+        - Shape: pentagon
+          Color: [ 0, 255, 0 ]
+          Scale: 1.0
+
+  - Name: gnome
+    Z: 1
+    Variables:
+      - Name: gnome_health
+        InitialValue: 3
+      - Name: is_chasing
+        InitialValue: 0
+      - Name: chase_cooldown
+        InitialValue: 0
+    InitialActions:
+      - Action: gnome_random_movement
+        Randomize: true
+    MapCharacter: g
+    Observers:
+      Isometric:
+        - Image: isometric_sprites/gnome.png
+      Sprite2D:
+        - Image: isometric_sprites/gnome.png
+      Block2D:
+        - Shape: hexagon
+          Color: [ 255, 0, 0 ]
+          Scale: 1.0
+        - Shape: hexagon
+          Color: [ 255, 0, 0 ]
+          Scale: 1.0
+        - Shape: hexagon
+          Color: [ 255, 0, 0 ]
+          Scale: 1.0
+        - Shape: hexagon
+          Color: [ 255, 0, 0 ]
+          Scale: 1.0
